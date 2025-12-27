@@ -6,11 +6,11 @@ import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-interface ProductsHeaderProps {
+interface ProductHeaderProps {
     product: Pick<Product, 'name' | "imageUrl">;
 }
 
-const ProductHeader = ({product}: ProductsHeaderProps) => {
+const ProductHeader = ({product}: ProductHeaderProps) => {
     const router = useRouter()
     const handleBackClick = () => router.back()
     return (
