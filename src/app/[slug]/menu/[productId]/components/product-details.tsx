@@ -6,6 +6,7 @@ import { formatCurrency } from "@/helpers/format-currency";
 import { Button } from "@/components/ui/button";
 import { ChefHatIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ProductDetailsProps {
     product: Prisma.ProductGetPayload<{include: { restaurant: {
@@ -31,8 +32,8 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         setQuantity((prev) => prev + 1);
     };
 
-   return ( <div className="relative flex flex-col flex-auto z-50 rounded-t-3xl p-5 mt-[-1.5rem] ">
-    <div className="flex-auto">
+   return ( <div className="relative flex flex-col flex-auto z-50 rounded-t-3xl p-5 mt-[-1.5rem] overflow-hidden">
+    <div className="flex-auto overflow-hidden">
          {/* RESTAURANTE */}
         <div className="flex items-center gap-1.5">
             <Image 
@@ -49,7 +50,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         <h2 className="mt-2 text-xl font-semibold">{product.name}</h2>
 
         {/*PREÇO E QUANTIDADE */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-3">
         <h3 className="text-xl font-semibold">{formatCurrency(product.price)}</h3>
         <div className="flex items-center gap-3 text-center">
             <Button variant="outline" className="h-8 w-8 rounded-xl" onClick={handleDecreaseQuantity}>
@@ -62,6 +63,7 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
         </div>
         </div>
 
+        <ScrollArea  className="h-full">
         {/* SOBRE */}
         <div className="mt-6 space-y-3">
            <h4 className="font-semibold">Sobre</h4> 
@@ -74,8 +76,13 @@ const ProductDetails = ({ product }: ProductDetailsProps) => {
                 <ChefHatIcon size={18} />
                 <h4 className="font-semibold">Ingredientes</h4>
             </div> 
-           <p className="text-sm text-muted-foreground">{product.ingredients}</p>
+            <ul className="list-disc px-5 text-sm text-muted-foreground">
+                {product.ingredients.map((ingredient) => (
+                    <li key={ingredient}>{ingredient}</li>
+                ))}
+            </ul>
         </div>
+        </ScrollArea>
     </div>
        
         <Button className="mt-6 w-full rounded-full">Adicionar à sacola</Button>
