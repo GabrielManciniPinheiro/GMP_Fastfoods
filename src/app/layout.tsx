@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "FSW Donalds",
-  description: "Bora finalizar esse projeto lindo!",
+  title: "GMP-FastFoods",
+  description: "Aplicativo Totem de pedidos para fast-foods",
 };
 
 export default function RootLayout({
