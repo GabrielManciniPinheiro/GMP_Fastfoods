@@ -27,6 +27,7 @@ const ProductHeader = ({product}: ProductHeaderProps) => {
         variant="secondary"
         size="icon"
         className="absolute right-4 top-4 z-50 rounded-full"
+        //"http://localhost:3000/gmp-fastfoods/orders"
         >
         <ScrollTextIcon />
         </Button>
