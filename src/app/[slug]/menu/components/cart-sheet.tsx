@@ -10,7 +10,7 @@ import CartProductItem from "./cart-product-item";
 import { Card, CardContent } from "@/components/ui/card";
 import { formatCurrency } from "@/helpers/format-currency";
 import { Button } from "@/components/ui/button";
-import FinishOrderDialog from "./finish-order-dialog";
+import FinishOrderDialog from "./finish-order-dialog-final";
 
 const CartSheet = () => {
   const [finishOrderDialogIsOpen, setFinishOrderDialogIsOpen] = useState(false);
