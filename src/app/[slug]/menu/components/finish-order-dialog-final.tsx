@@ -48,12 +48,6 @@ const formSchema = z.object({
     .refine((value) => isValidCpf(value), {
       message: "CPF inválido.",
     }),
-  endereco: z.string().trim().min(1, {
-    message: "O endereço é obrigatório.",
-  }),
-  email: z.string().trim().min(1, {
-    message: "O Email é obrigatório.",
-  }),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -74,8 +68,6 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
     defaultValues: {
       name: "",
       cpf: "",
-      endereco: "",
-      email: "",
     },
     shouldUnregister: true,
   });
@@ -91,8 +83,6 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
         consumptionMethod,
         customerCpf: data.cpf,
         customerName: data.name,
-        customerEndereco: data.endereco,
-        customerEmail: data.email,
         products,
         slug,
       });
@@ -157,37 +147,6 @@ const FinishOrderDialog = ({ open, onOpenChange }: FinishOrderDialogProps) => {
                         customInput={Input}
                         {...field}
                       />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="endereco"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Seu Endereço com número</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Digite seu Endereço completo..."
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Seu Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Digite seu Email..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

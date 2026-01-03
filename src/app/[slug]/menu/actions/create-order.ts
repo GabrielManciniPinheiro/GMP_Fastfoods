@@ -10,8 +10,6 @@ import { removeCpfPunctuation } from "../helpers/cpf";
 interface CreateOrderInput {
   customerName: string;
   customerCpf: string;
-  customerEmail: string;
-  customerEndereco: string;
   products: Array<{
     id: string;
     quantity: number;
@@ -46,8 +44,6 @@ export const createOrder = async (input: CreateOrderInput) => {
       status: "PENDING",
       customerName: input.customerName,
       customerCpf: removeCpfPunctuation(input.customerCpf),
-      customerEmail: input.customerEmail,
-      customerEndereco: input.customerEndereco,
       orderProducts: {
         createMany: {
           data: productsWithPricesAndQuantities,

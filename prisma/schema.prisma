@@ -57,8 +57,6 @@ model Order {
   orderProducts     OrderProduct[]
   customerName      String
   customerCpf       String
-  customerEndereco  String
-  customerEmail     String
   createdAt         DateTime          @default(now())
   updatedAt         DateTime          @updatedAt
 }
