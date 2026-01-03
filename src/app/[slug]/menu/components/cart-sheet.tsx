@@ -22,7 +22,12 @@ const CartSheet = () => {
           <SheetTitle className="text-left">Meus pedidos</SheetTitle>
         </SheetHeader>
         <div className="flex h-full flex-col py-5">
-          <div className="flex-auto">
+          <div className="flex-auto overflow-y-auto">
+            {products.length === 0 && (
+              <div className="flex h-full flex-col items-center justify-center text-center text-muted-foreground">
+                <p>Seu carrinho está vazio : </p>
+              </div>
+            )}
             {products.map((product) => (
               <CartProductItem key={product.id} product={product} />
             ))}
@@ -39,6 +44,7 @@ const CartSheet = () => {
 
           <Button
             className="w-full rounded-full"
+            disabled={products.length === 0}
             onClick={() => setFinishOrderDialogIsOpen(true)}
           >
             Finalizar pedido
